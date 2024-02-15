@@ -4,6 +4,21 @@ This is a simple Docker container that runs a JSON API service that allows HTML 
 
 _Security Note: This is intended to run as a micro service - do not directly expose to the public internet_
 
+## Building and running Docker locally
+
+```bash
+docker build . -t scifeon.azurecr.io/scifeon/pdf-service:1.0.0
+docker run  -p 2305:2305 scifeon.azurecr.io/scifeon/pdf-service:1.0.0
+```
+
+## Publish image to Azure Container Registry
+
+```bash
+az login
+az acr login --name scifeon
+docker push scifeon.azurecr.io/scifeon/pdf-service:1.0.0
+```
+
 ## Usage
 
 ```bash
