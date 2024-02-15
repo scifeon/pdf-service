@@ -11,7 +11,14 @@ RUN apk add --no-cache \
     ca-certificates \
     ttf-freefont \
     nodejs \
-    yarn
+    yarn \
+    fontconfig
+
+# Copy fonts
+COPY fonts/*.ttf /usr/share/fonts/
+
+# Update font cache
+RUN fc-cache -f
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
