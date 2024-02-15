@@ -25,7 +25,7 @@ if (
 }
 
 app
-  .use(bodyParser({ multipart: true }))
+  .use(bodyParser({ multipart: true, jsonLimit: "100mb" }))
   .use(loggingMiddleware())
   .use(errorHandler);
 
