@@ -1,4 +1,4 @@
-FROM node:14.15.4-alpine3.10
+FROM node:lts-alpine
 
 ARG NODE_ENV=production
 
@@ -10,15 +10,18 @@ RUN apk add --no-cache \
     harfbuzz \
     ca-certificates \
     ttf-freefont \
+    font-roboto \
+    font-noto \
     nodejs \
     yarn \
     fontconfig
 
 # Copy fonts
 COPY fonts/*.ttf /usr/share/fonts/
+COPY fonts/*.ttf ~/.fonts
 
 # Update font cache
-RUN fc-cache -f
+RUN fc-cache -fv
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
